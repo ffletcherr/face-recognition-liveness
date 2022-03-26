@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Custom
+*.pth
+*.onnx
+*.pt
+
+
 # C extensions
 *.so
 
