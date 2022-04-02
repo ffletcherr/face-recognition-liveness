@@ -60,11 +60,13 @@ thread.start()
 w,h = (1280//2,720//2)
 fps = 1
 buffer = np.ones((w,w,3))*255
-vid = cv2.VideoCapture("""autovideosrc 
-                       ! videoconvert 
-                       ! video/x-raw, framerate=5/1,
-                       width=640, height=480, format=BGR 
-                       ! appsink""")
+source_vid = """autovideosrc 
+                ! videoconvert 
+                ! video/x-raw, framerate=5/1,
+                width=640, height=480, format=BGR 
+                ! appsink"""
+source_vid = 0
+vid = cv2.VideoCapture(source_vid)
 while True:
     ret,first_frame = vid.read()
     time.sleep(wait)

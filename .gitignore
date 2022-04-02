@@ -4,6 +4,12 @@ __pycache__/
 *$py.class
 
 # Custom
+*.jpg
+*.png
+*.jpeg
+*.avi
+*.mp4
+*.csv
 *.pth
 *.onnx
 *.pt
