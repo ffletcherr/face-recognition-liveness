@@ -1,7 +1,0 @@
-matplotlib
-psutil
-opencv-contrib-python
-pandas
-torch
-torchvision
-facenet-pytorch => modify mtcnn
