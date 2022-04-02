@@ -12,7 +12,7 @@ from torchvision.transforms import functional as F
 def detect_faces_mediapipe(detector, image: np.ndarray):
     h, w = image.shape[:2]
     predictions = detector.process(image[:, :, ::-1])
-    bboxs = []
+    bboxes = []
     if predictions.multi_face_landmarks:
         for prediction in predictions.multi_face_landmarks:
             pts = np.array([(pt.x * w, pt.y * h)
@@ -20,8 +20,8 @@ def detect_faces_mediapipe(detector, image: np.ndarray):
                            dtype=np.float64)
             bbox = np.vstack([pts.min(axis=0), pts.max(axis=0)])
             bbox = np.round(bbox).astype(np.int32)
-            bboxs.append(bbox)
-    return bboxs
+            bboxes.append(bbox)
+    return bboxes
 
 
 def imresample(img, sz):
