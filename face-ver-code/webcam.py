@@ -116,6 +116,7 @@ while True:
             continue
         if img_cropped is not None:
             verifier.last_face = img_cropped
+            cv2.imshow("img_cropped",(img_cropped.permute(1,2,0).detach().cpu().numpy()*255).astype(np.uint8))
         # verification
         embeddings = verifier.schedule()
         if embeddings is not None:
