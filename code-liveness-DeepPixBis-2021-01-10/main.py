@@ -7,7 +7,7 @@ import csv
 from utils import DeepPixBiSExtractor
 
 model = DeepPixBiSExtractor(scoring_method='combined', #['pixel_mean','binary','combined']
-                            model_file='Pretrained_models/OULU_Protocol_2_model_0_0.pth')
+                            model_file='../Pretrained_models/OULU_Protocol_2_model_0_0.pth')
 
        
 font                   = cv2.FONT_HERSHEY_SIMPLEX
