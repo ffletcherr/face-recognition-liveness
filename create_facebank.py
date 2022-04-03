@@ -13,18 +13,18 @@ from tqdm import tqdm
 from modules import FaceDetection, IdentityVerification
 
 # Create the parser
-parser = argparse.ArgumentParser(description='List the content of a folder')
+parser = argparse.ArgumentParser(description='Argument for creating facebank csv file')
 
 # Add the arguments
-parser.add_argument('images',
+parser.add_argument('--images',
                     metavar='path',
                     type=str,
                     help='the path to the images folder')
-parser.add_argument('checkpoint',
+parser.add_argument('--checkpoint',
                     metavar='path',
                     type=str,
                     help='the path to the resnet vggface2 onnx checkpoint')
-parser.add_argument('csv',
+parser.add_argument('--output',
                     metavar='path',
                     type=str,
                     help='the path to the output csv file')
@@ -32,7 +32,7 @@ args = parser.parse_args()
 
 input_path = args.images
 checkpoint_path = args.checkpoint
-csv_path = args.csv
+csv_path = args.output
 
 if not os.path.isdir(input_path):
     print('The path specified is not a directory')
