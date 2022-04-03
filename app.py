@@ -1,20 +1,31 @@
 import os
+from os import environ
 from pathlib import Path
 
 import cv2
 import jsonpickle
 import numpy as np
+from dotenv import load_dotenv
 from flask import Flask, Response, request
 
 from modules import FaceDetection, IdentityVerification, LivenessDetection
 
 root = Path(os.path.abspath(__file__)).parent.absolute()
-data_folder = root / "data"
 
-resNet_checkpoint_path = data_folder / "InceptionResnetV1_vggface2.onnx"
-facebank_path = data_folder / "hm.csv"
+load_dotenv((root / 'dot_env').as_posix())  # take environment variables from .env.
 
-deepPix_checkpoint_path = data_folder / "OULU_Protocol_2_model_0_0.onnx"
+data_folder = environ.get('DATA_FOLDER')
+resnet_name = environ.get('RESNET')
+deeppix_name = environ.get('DEEPPIX')
+facebank_name = environ.get('FACEBANK')
+
+
+data_folder = root / data_folder
+
+resNet_checkpoint_path = data_folder / resnet_name
+facebank_path = data_folder / facebank_name
+
+deepPix_checkpoint_path = data_folder / deeppix_name
 
 faceDetector = FaceDetection()
 identityChecker = IdentityVerification(
