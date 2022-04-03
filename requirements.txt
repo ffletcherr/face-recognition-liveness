@@ -1,4 +1,5 @@
 -f https://download.pytorch.org/whl/torch_stable.html
+--trusted-host download.pytorch.org
 Flask==2.0.2
 jsonpickle==2.1.0
 mediapipe==0.8.9.1
