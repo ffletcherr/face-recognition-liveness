@@ -10,3 +10,4 @@ def post_image(img_file):
     return response.json()
 
 response = post_image("data/test.jpg")
+print("response:\n",response)
