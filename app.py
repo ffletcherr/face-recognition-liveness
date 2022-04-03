@@ -29,7 +29,7 @@ app = Flask(__name__)
 def main():
     r = request
     # convert string of image data to uint8
-    nparr = np.fromstring(r.data, np.uint8)
+    nparr = np.frombuffer(r.data, np.uint8)
     # decode image
     frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
     faces, boxes = faceDetector(frame)
@@ -59,7 +59,7 @@ def main():
 def identity():
     r = request
     # convert string of image data to uint8
-    nparr = np.fromstring(r.data, np.uint8)
+    nparr = np.frombuffer(r.data, np.uint8)
     # decode image
     frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
     faces, boxes = faceDetector(frame)
@@ -86,7 +86,7 @@ def identity():
 def liveness():
     r = request
     # convert string of image data to uint8
-    nparr = np.fromstring(r.data, np.uint8)
+    nparr = np.frombuffer(r.data, np.uint8)
     # decode image
     frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
     faces, boxes = faceDetector(frame)
@@ -108,6 +108,6 @@ def liveness():
     response_pickled = jsonpickle.encode(response)
     return Response(response=response_pickled, status=status_code, mimetype="application/json")
 
-
-# start flask app
-app.run(host="0.0.0.0", port=5000)
+if __name__ == '__main__':
+    # start flask app
+    app.run(host="0.0.0.0", port=5000)
