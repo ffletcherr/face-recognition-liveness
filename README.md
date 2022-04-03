@@ -39,5 +39,5 @@ sudo docker run -p 5000:5000 face-demo python3 -m flask run --host=0.0.0.0 --por
 ## Test
 Finally we can test our app using a python client. So for testing just run this:
 ```
-python3 client.py --images ./data/test.jpg --host localhost --port 5000 --service main 
+python3 client.py --image ./data/test.jpg --host localhost --port 5000 --service main 
 ```
