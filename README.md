@@ -1,5 +1,10 @@
 # face-recognition-liveness
 
+Face liveness detection and indentity recognition using fast and accurate convolutional neural networks is implemented in Pytorch. Also a Flask API and ready-to-use Dockerfile can be found in this repository.
+
+
+## Inctroduction
+
 First we must create a csv which contains each face embedding vector. Then we can build a docker image and run our app as a container.
 
 ## Create Facebank CSV
