@@ -2,12 +2,16 @@
 
 Face liveness detection and indentity recognition using fast and accurate convolutional neural networks is implemented in Pytorch. Also a Flask API and ready-to-use Dockerfile can be found in this repository.
 
+## Getting Started
 
-## Inctroduction
+Download models and put them in `data` folder.
 
-First we must create a csv which contains each face embedding vector. Then we can build a docker image and run our app as a container.
+- [InceptionResnetV1_vggface2.onnx](https://github.com/ffletcherr/face-recognition-liveness/releases/download/v0.1/InceptionResnetV1_vggface2.onnx)
+- [OULU_Protocol_2_model_0_0.onnx](https://github.com/ffletcherr/face-recognition-liveness/releases/download/v0.1/OULU_Protocol_2_model_0_0.onnx)
 
-## Create Facebank CSV
+Then we must create a csv which contains each face embedding vector. Then we can build a docker image and run our app as a container.
+
+### Create Facebank CSV
 In the first step you need a facebank. So put some images (jpg, jpeg, png) in a folder and create facebank csv file using `create_facebank.py` script:
 ```
 python3 create_facebank.py --images ./data --checkpoint ./data/InceptionResnetV1_vggface2.onnx --output ./data/test.csv
@@ -18,7 +22,7 @@ python3 create_facebank.py --images ./data --checkpoint ./data/InceptionResnetV1
 
 --output: the path to the output csv file
 
-## Run Docker
+### Run Docker
 
 Now you can start the deployment process. Variables (models and facebank names) can be changed in `dot_env` file:
 ```
@@ -41,7 +45,7 @@ Now run the image as a container:
 sudo docker run -p 5000:5000 face-demo python3 -m flask run --host=0.0.0.0 --port=5000
 ```
 
-## Test
+### Test
 Finally we can test our app using a python client. So for testing just run this:
 ```
 python3 client.py --image ./data/test.jpg --host localhost --port 5000 --service main 
