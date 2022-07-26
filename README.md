@@ -2,9 +2,12 @@
 
 Face liveness detection and indentity recognition using fast and accurate convolutional neural networks is implemented in Pytorch. Also a Flask API and ready-to-use Dockerfile can be found in this repository.
 
+This project uses [Mediapipe](https://github.com/google/mediapipe) for face detection and the face recognition model is borrowed from [facenet-pytorch](https://github.com/timesler/facenet-pytorch) .The liveness detection model came from [Deep Pixel-wise Binary Supervision for Face Presentation Attack Detection](https://arxiv.org/abs/1907.04047) paper and, [pre-trained models](https://www.idiap.ch/software/bob/docs/bob/bob.paper.deep_pix_bis_pad.icb2019/master/pix_bis.html#using-pretrained-models) are published by authors.
+
+
 ## Getting Started
 
-Download models and put them in `data` folder.
+Download .onnx models and put them in `data` folder.
 
 - [InceptionResnetV1_vggface2.onnx](https://github.com/ffletcherr/face-recognition-liveness/releases/download/v0.1/InceptionResnetV1_vggface2.onnx)
 - [OULU_Protocol_2_model_0_0.onnx](https://github.com/ffletcherr/face-recognition-liveness/releases/download/v0.1/OULU_Protocol_2_model_0_0.onnx)
