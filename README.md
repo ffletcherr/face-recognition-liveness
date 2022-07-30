@@ -20,7 +20,9 @@ Then we must create a csv which contains each face embedding vector. Then we can
 ### Create Facebank CSV
 In the first step you need a facebank. So put some images (jpg, jpeg, png) in a folder and create facebank csv file using `create_facebank.py` script:
 ```
-python3 create_facebank.py --images ./data --checkpoint ./data/InceptionResnetV1_vggface2.onnx --output ./data/test.csv
+python3 create_facebank.py --images ./data/image \
+--checkpoint ./data/checkpoints/InceptionResnetV1_vggface2.onnx \
+--output ./data/test.csv
 ```
 --images: the path to the images folder
 
