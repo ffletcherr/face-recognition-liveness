@@ -6,6 +6,7 @@ __pycache__/
 # Custom
 *.jpg
 *.png
+!data/images/reynolds*.png
 *.jpeg
 *.avi
 *.mp4
@@ -114,7 +115,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+# .env
 .venv
 env/
 venv/
