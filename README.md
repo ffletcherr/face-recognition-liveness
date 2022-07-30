@@ -32,7 +32,7 @@ python3 create_facebank.py --images ./data/image \
 
 ### Run Docker
 
-Now you can start the deployment process. Variables (models and facebank names) can be changed in `dot_env` file:
+Now you can start the deployment process. Variables (models and facebank names) can be changed in `app/.env` file:
 ```
 DATA_FOLDER=data
 RESNET=InceptionResnetV1_vggface2.onnx
@@ -56,5 +56,7 @@ sudo docker run -p 5000:5000 face-demo python3 -m flask run --host=0.0.0.0 --por
 ### Test
 Finally we can test our app using a python client. So for testing just run this:
 ```
-python3 client.py --image ./data/test.jpg --host localhost --port 5000 --service main 
+# face-recognition-liveness/
+$ cd ./app
+python3 client.py --image ../data/images/reynolds_001.png --host localhost --port 5000 --service main 
 ```
