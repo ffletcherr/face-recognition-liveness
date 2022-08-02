@@ -31,7 +31,7 @@ $ python webcam_test.py
 ## Create Facebank CSV
 In the first step you need a facebank. So put some images (jpg, jpeg, png) in a folder and create facebank csv file using `create_facebank.py` script:
 ```
-python3 create_facebank.py --images ./data/images \
+$ python3 create_facebank.py --images ./data/images \
 --checkpoint ./data/checkpoints/InceptionResnetV1_vggface2.onnx \
 --output ./data/test.csv
 ```
@@ -55,13 +55,13 @@ FACEBANK=test.csv
 First build the docker image:
 
 ```
-sudo docker build --tag face-demo .
+$ sudo docker build --tag face-demo .
 ```
 
 Now run the image as a container:
 
 ```
-sudo docker run -p 5000:5000 face-demo python3 -m flask run --host=0.0.0.0 --port=5000
+$ sudo docker run -p 5000:5000 face-demo python3 -m flask run --host=0.0.0.0 --port=5000
 ```
 
 ### Test
@@ -69,5 +69,5 @@ Finally we can test our app using a python client. So for testing just run this:
 ```
 # face-recognition-liveness/
 $ cd ./app
-python3 client.py --image ../data/images/reynolds_001.png --host localhost --port 5000 --service main 
+$ python3 client.py --image ../data/images/reynolds_001.png --host localhost --port 5000 --service main 
 ```
