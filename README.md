@@ -17,10 +17,21 @@ Download .onnx models and put them in `data` folder.
 
 Then we must create a csv which contains each face embedding vector. Then we can build a docker image and run our app as a container.
 
+## Simple Usage
+
+Run the following command to check liveness (and test are you Ryan Reynolds or not!)
+
+```bash
+$ python webcam_test.py
+```
+
+>*Note:* Liveness score is between 0 and 1 and, in average, it is enough be greater than ~ **0.03** to be considered as a live image.
+
+
 ### Create Facebank CSV
 In the first step you need a facebank. So put some images (jpg, jpeg, png) in a folder and create facebank csv file using `create_facebank.py` script:
 ```
-python3 create_facebank.py --images ./data/image \
+python3 create_facebank.py --images ./data/images \
 --checkpoint ./data/checkpoints/InceptionResnetV1_vggface2.onnx \
 --output ./data/test.csv
 ```
