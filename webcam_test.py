@@ -9,7 +9,7 @@ root = Path(os.path.abspath(__file__)).parent.absolute()
 data_folder = root / "data"
 
 resNet_checkpoint_path = data_folder / "checkpoints" / "InceptionResnetV1_vggface2.onnx"
-facebank_path = data_folder / "test.csv"
+facebank_path = data_folder / "reynolds.csv"
 
 deepPix_checkpoint_path = data_folder / "checkpoints" / "OULU_Protocol_2_model_0_0.onnx"
 
