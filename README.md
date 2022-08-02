@@ -28,7 +28,7 @@ $ python webcam_test.py
 >*Note:* Liveness score is between 0 and 1 and, in average, it is enough be greater than ~ **0.03** to be considered as a live image.
 
 
-### Create Facebank CSV
+## Create Facebank CSV
 In the first step you need a facebank. So put some images (jpg, jpeg, png) in a folder and create facebank csv file using `create_facebank.py` script:
 ```
 python3 create_facebank.py --images ./data/images \
@@ -41,7 +41,7 @@ python3 create_facebank.py --images ./data/images \
 
 --output: the path to the output csv file
 
-### Run Docker
+## Run Docker
 
 Now you can start the deployment process. Variables (models and facebank names) can be changed in `app/.env` file:
 ```
