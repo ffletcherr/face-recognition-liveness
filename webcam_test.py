@@ -4,6 +4,7 @@ from pathlib import Path
 import cv2
 
 from facetools import FaceDetection, IdentityVerification, LivenessDetection
+from facetools.utils import visualize_results
 
 root = Path(os.path.abspath(__file__)).parent.absolute()
 data_folder = root / "data"
@@ -13,7 +14,7 @@ facebank_path = data_folder / "reynolds.csv"
 
 deepPix_checkpoint_path = data_folder / "checkpoints" / "OULU_Protocol_2_model_0_0.onnx"
 
-faceDetector = FaceDetection()
+faceDetector = FaceDetection(max_num_faces=1)
 identityChecker = IdentityVerification(
     checkpoint_path=resNet_checkpoint_path.as_posix(),
     facebank_path=facebank_path.as_posix(),
@@ -25,23 +26,13 @@ while True:
     ret, frame = cap.read()
     if not ret:
         break
-
+    canvas = frame.copy()
     faces, boxes = faceDetector(frame)
-    if not len(faces):
-        continue
-
-    face_arr = faces[0]
-    min_sim_score, mean_sim_score = identityChecker(face_arr)
-    liveness_score = livenessDetector(face_arr)
-    print(
-        "liveness_score:",
-        liveness_score,
-        "min_sim_score:",
-        min_sim_score,
-        "mean_sim_score:",
-        mean_sim_score,
-    )
-    cv2.imshow("face", face_arr)
+    for face_arr, box in zip(faces, boxes):
+        min_sim_score, mean_sim_score = identityChecker(face_arr)
+        liveness_score = livenessDetector(face_arr)
+        canvas = visualize_results(canvas, box, liveness_score, mean_sim_score)
+    cv2.imshow("face", canvas)
     k = cv2.waitKey(1)
     if k == ord("q"):
         break

@@ -8,9 +8,6 @@ from torch.nn.functional import interpolate
 from torchvision import transforms as T
 
 
-
-
-
 def imresample(img, sz):
     im_data = interpolate(img, size=sz, mode="area")
     return im_data
@@ -71,3 +68,36 @@ def extract_face(img, box, image_size=160, margin=0, save_path=None):
         save_img(face, save_path)
 
     return face
+
+
+def visualize_results(
+    frame: np.ndarray, box: np.ndarray, liveness_score: int, verification_score: int
+):
+    cv2.rectangle(
+        frame,
+        (box[0][0], box[0][1]),
+        (box[1][0], box[1][1]),
+        (0, 255, 0),
+        2,
+        cv2.LINE_AA,
+    )
+
+    cv2.putText(
+        frame,
+        f"Liveness: {liveness_score:0.3f}",
+        (box[0][0], box[0][1] - 25),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.7,
+        (0, 0, 255),
+        2,
+    )
+    cv2.putText(
+        frame,
+        f"Verification: {verification_score:0.3f}",
+        (box[0][0], box[0][1] - 5),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.7,
+        (0, 0, 255),
+        2,
+    )
+    return frame
