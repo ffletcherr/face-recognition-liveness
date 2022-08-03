@@ -10,12 +10,12 @@ This project uses [Mediapipe](https://github.com/google/mediapipe) for face dete
 
 ## Getting Started
 
-Download .onnx models and put them in `data` folder.
+Download .onnx models and put them in `data/checkpoints` folder.
 
 - [InceptionResnetV1_vggface2.onnx](https://github.com/ffletcherr/face-recognition-liveness/releases/download/v0.1/InceptionResnetV1_vggface2.onnx)
 - [OULU_Protocol_2_model_0_0.onnx](https://github.com/ffletcherr/face-recognition-liveness/releases/download/v0.1/OULU_Protocol_2_model_0_0.onnx)
 
-Then we must create a csv which contains each face embedding vector. Then we can build a docker image and run our app as a container.
+>*Note:* If you have an internet connection, models will be downloaded automatically.
 
 ## Simple Usage
 
